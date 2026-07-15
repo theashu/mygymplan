@@ -1,0 +1,1056 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complete 6-Day Gym Plan</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6f7;color:#17232d;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}.wrap{max-width:1080px;margin:auto;padding:22px}
+.hero{padding:50px 30px;border-radius:28px;background:linear-gradient(135deg,#102a43,#147d92);color:white}.hero h1{font-size:clamp(40px,7vw,72px);line-height:.95;margin:8px 0 15px}.hero p{max-width:760px;color:#d9f4f6}
+.note{padding:17px 19px;background:#fff8df;border:1px solid #efd58a;border-radius:16px;margin:18px 0}nav{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 28px}nav a{text-decoration:none;color:#17324d;background:white;border:1px solid #dce5e9;padding:14px;border-radius:14px;font-weight:800}nav small{display:block;color:#6d7d88}
+.day{background:white;border:1px solid #dce5e9;border-radius:25px;padding:25px;margin-bottom:30px;box-shadow:0 12px 34px #102a4310}.dayhead{border-bottom:1px solid #e4eaed;padding-bottom:17px;margin-bottom:19px}.dayhead span,.exercise em{color:#147d92;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-style:normal}h2{font-size:36px;margin:3px 0}h3{font-size:23px}h4{font-size:20px;margin:3px 0}
+.warm{background:#edf8fa;padding:19px 21px;border-radius:18px;margin-bottom:25px}.group>h3{margin-top:28px}.exercise{border:1px solid #dce5e9;border-radius:18px;padding:16px;margin-bottom:14px}.head{display:flex;justify-content:space-between;align-items:center;gap:12px}input{display:none}label{background:#102a43;color:white;padding:10px 13px;border-radius:10px;font-weight:800;cursor:pointer;white-space:nowrap}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}.photo-item{position:relative}.photo-item img{width:100%;height:230px;object-fit:contain;background:#f8fafb;border:1px solid #dce5e9;border-radius:12px;display:block}.remove{position:absolute;top:8px;right:8px;width:34px;height:34px;border:0;border-radius:50%;background:#102a43;color:white;font-size:23px;cursor:pointer}.placeholder{min-height:115px;border:2px dashed #c8d5db;border-radius:12px;display:grid;place-items:center;text-align:center;color:#71818c;background:#f8fafb;padding:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr 2fr;gap:8px}.stats div{background:#f4f7f8;border-radius:10px;padding:10px;font-size:13px;font-weight:700}.stats b{display:block;text-transform:uppercase;font-size:10px;color:#71818c}.recommended{background:#102a43;color:white;border-radius:18px;padding:19px 21px;margin-top:25px}.recommended small{color:#8be0ea;font-weight:900}.finish{background:#f6f8f9;border-radius:18px;padding:19px 21px;margin-top:14px}
+@media(max-width:720px){.wrap{padding:10px}nav{grid-template-columns:1fr 1fr}.day{padding:14px}.stats{grid-template-columns:1fr}.head{align-items:flex-start;flex-direction:column}label{width:100%;text-align:center}h2{font-size:28px}}
+
+.storage-toolbar{position:sticky;top:10px;z-index:50;display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#fff;border:1px solid #dce5e9;border-radius:16px;padding:12px;margin:18px 0;box-shadow:0 8px 25px #102a4320}
+.storage-toolbar button,.storage-toolbar .import-label{border:0;background:#102a43;color:#fff;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;font:inherit}
+.storage-toolbar .secondary{background:#147d92}
+.storage-toolbar .danger{background:#9f2d2d}
+.storage-toolbar .status{font-size:13px;color:#536570;font-weight:700;flex:1;min-width:220px}
+#backupImport{display:none}
+@media(max-width:720px){.storage-toolbar button,.storage-toolbar .import-label{width:100%;text-align:center}.storage-toolbar .status{width:100%}}
+
+
+.default-photo{position:relative}
+.default-photo img{display:block;width:100%;height:230px;object-fit:contain;background:#f8fafb;border:1px solid #dce5e9;border-radius:12px}
+.default-badge{position:absolute;left:8px;bottom:8px;background:#147d92;color:#fff;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:900}
+.image-source-note{font-size:12px;color:#6b7b86;margin-top:7px}
+
+</style></head><body><div class="wrap"><section class="hero"><b>6 DAYS · FULL GYM · FAT LOSS + LEAN PHYSIQUE</b><h1>Your Complete<br>Gym Plan</h1><p>All exercises organised day by day, with extra options for machine availability and working image upload controls for every exercise.</p></section>
+<div class="note"><b>Image uploads:</b> Click <b>＋ Add images</b> beside any exercise. This version uses FileReader/Base64 to avoid the broken-image issue from the earlier file. You can add multiple photos and remove individual images.</div>
+<div class="storage-toolbar">
+  <button type="button" onclick="exportBackup()">⬇ Export Backup</button>
+  <label class="import-label secondary" for="backupImport">⬆ Import Backup</label>
+  <input id="backupImport" type="file" accept=".json,application/json" onchange="importBackup(event)">
+  <button type="button" class="danger" onclick="clearAllSavedImages()">Clear All Saved Images</button>
+  <div class="status" id="storageStatus">Persistent storage is starting…</div>
+</div>
+<nav><a href="#day1">Day 1 — Monday<small> Chest + Shoulders</small></a><a href="#day2">Day 2 — Tuesday<small> Arms + Abs</small></a><a href="#day3">Day 3 — Wednesday<small> Back + Legs</small></a><a href="#day4">Day 4 — Thursday<small> Chest + Shoulders</small></a><a href="#day5">Day 5 — Friday<small> Arms + Abs</small></a><a href="#day6">Day 6 — Saturday<small> Back + Legs</small></a></nav><section class="day" id="day1"><header class="dayhead"><span>Workout 1 of 6</span><h2>Day 1 — Monday: Chest + Shoulders</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>3–5 min light cardio</li><li>Arm Circles — 10–15 each direction</li><li>Band Pull-Aparts — 2 × 15–20</li><li>Push-Ups — 1 × 10–15 easy reps</li><li>2–3 progressive warm-up sets before first heavy press</li></ul></div><section class="group"><h3>Chest — Choose 4</h3><article class="exercise" data-exercise-name="Flat Bench Press">
+<div class="head"><div><em>Chest</em><h4>Flat Bench Press</h4></div>
+<label for="f1">＋ Add images</label><input id="f1" type="file" accept="image/*" multiple onchange="showImages(event,'p1')"></div>
+<div class="photos" id="p1"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–10</div><div><b>Rest</b>90–120 sec</div><div><b>Target</b>Overall chest</div></div>
+</article><article class="exercise" data-exercise-name="Incline Dumbbell Press">
+<div class="head"><div><em>Chest</em><h4>Incline Dumbbell Press</h4></div>
+<label for="f2">＋ Add images</label><input id="f2" type="file" accept="image/*" multiple onchange="showImages(event,'p2')"></div>
+<div class="photos" id="p2"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Upper chest</div></div>
+</article><article class="exercise" data-exercise-name="Pec Deck Fly">
+<div class="head"><div><em>Chest</em><h4>Pec Deck Fly</h4></div>
+<label for="f3">＋ Add images</label><input id="f3" type="file" accept="image/*" multiple onchange="showImages(event,'p3')"></div>
+<div class="photos" id="p3"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Chest isolation</div></div>
+</article><article class="exercise" data-exercise-name="Dumbbell Pullover">
+<div class="head"><div><em>Chest</em><h4>Dumbbell Pullover</h4></div>
+<label for="f4">＋ Add images</label><input id="f4" type="file" accept="image/*" multiple onchange="showImages(event,'p4')"></div>
+<div class="photos" id="p4"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Chest and lats</div></div>
+</article><article class="exercise" data-exercise-name="Machine Chest Press">
+<div class="head"><div><em>Chest</em><h4>Machine Chest Press</h4></div>
+<label for="f5">＋ Add images</label><input id="f5" type="file" accept="image/*" multiple onchange="showImages(event,'p5')"></div>
+<div class="photos" id="p5"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Overall chest</div></div>
+</article><article class="exercise" data-exercise-name="Cable Chest Fly">
+<div class="head"><div><em>Chest</em><h4>Cable Chest Fly</h4></div>
+<label for="f6">＋ Add images</label><input id="f6" type="file" accept="image/*" multiple onchange="showImages(event,'p6')"></div>
+<div class="photos" id="p6"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Chest isolation</div></div>
+</article><article class="exercise" data-exercise-name="Chest Dips">
+<div class="head"><div><em>Chest</em><h4>Chest Dips</h4></div>
+<label for="f7">＋ Add images</label><input id="f7" type="file" accept="image/*" multiple onchange="showImages(event,'p7')"></div>
+<div class="photos" id="p7"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Chest and triceps</div></div>
+</article></section><section class="group"><h3>Shoulders — Choose 3–4</h3><article class="exercise" data-exercise-name="Front Military Press">
+<div class="head"><div><em>Shoulders</em><h4>Front Military Press</h4></div>
+<label for="f8">＋ Add images</label><input id="f8" type="file" accept="image/*" multiple onchange="showImages(event,'p8')"></div>
+<div class="photos" id="p8"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–10</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Front and side delts</div></div>
+</article><article class="exercise" data-exercise-name="Side Lateral Raises">
+<div class="head"><div><em>Shoulders</em><h4>Side Lateral Raises</h4></div>
+<label for="f9">＋ Add images</label><input id="f9" type="file" accept="image/*" multiple onchange="showImages(event,'p9')"></div>
+<div class="photos" id="p9"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Side delts</div></div>
+</article><article class="exercise" data-exercise-name="Barbell Upright Row">
+<div class="head"><div><em>Shoulders</em><h4>Barbell Upright Row</h4></div>
+<label for="f10">＋ Add images</label><input id="f10" type="file" accept="image/*" multiple onchange="showImages(event,'p10')"></div>
+<div class="photos" id="p10"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Side delts and upper traps</div></div>
+</article><article class="exercise" data-exercise-name="Seated Dumbbell Shoulder Press">
+<div class="head"><div><em>Shoulders</em><h4>Seated Dumbbell Shoulder Press</h4></div>
+<label for="f11">＋ Add images</label><input id="f11" type="file" accept="image/*" multiple onchange="showImages(event,'p11')"></div>
+<div class="photos" id="p11"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Front and side delts</div></div>
+</article><article class="exercise" data-exercise-name="Cable Lateral Raise">
+<div class="head"><div><em>Shoulders</em><h4>Cable Lateral Raise</h4></div>
+<label for="f12">＋ Add images</label><input id="f12" type="file" accept="image/*" multiple onchange="showImages(event,'p12')"></div>
+<div class="photos" id="p12"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Side delts</div></div>
+</article><article class="exercise" data-exercise-name="Reverse Pec Deck">
+<div class="head"><div><em>Shoulders</em><h4>Reverse Pec Deck</h4></div>
+<label for="f13">＋ Add images</label><input id="f13" type="file" accept="image/*" multiple onchange="showImages(event,'p13')"></div>
+<div class="photos" id="p13"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Rear delts</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>Flat Bench Press → Incline Dumbbell Press → Pec Deck Fly → Dumbbell Pullover → Front Military Press → Side Lateral Raises → Reverse Pec Deck</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section><section class="day" id="day2"><header class="dayhead"><span>Workout 2 of 6</span><h2>Day 2 — Tuesday: Arms + Abs</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>3–5 min easy cardio</li><li>Arm Circles — 10 each direction</li><li>Wrist Circles — 10–15 each direction</li><li>Very light dumbbell curls — 1 × 15</li><li>Very light cable pushdowns — 1 × 15</li></ul></div><section class="group"><h3>Biceps — Choose 3</h3><article class="exercise" data-exercise-name="Barbell Curl">
+<div class="head"><div><em>Biceps</em><h4>Barbell Curl</h4></div>
+<label for="f14">＋ Add images</label><input id="f14" type="file" accept="image/*" multiple onchange="showImages(event,'p14')"></div>
+<div class="photos" id="p14"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Overall biceps</div></div>
+</article><article class="exercise" data-exercise-name="Alternate Dumbbell Curl">
+<div class="head"><div><em>Biceps</em><h4>Alternate Dumbbell Curl</h4></div>
+<label for="f15">＋ Add images</label><input id="f15" type="file" accept="image/*" multiple onchange="showImages(event,'p15')"></div>
+<div class="photos" id="p15"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12 / arm</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall biceps</div></div>
+</article><article class="exercise" data-exercise-name="Hammer Curl">
+<div class="head"><div><em>Biceps</em><h4>Hammer Curl</h4></div>
+<label for="f16">＋ Add images</label><input id="f16" type="file" accept="image/*" multiple onchange="showImages(event,'p16')"></div>
+<div class="photos" id="p16"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Biceps, brachialis and forearms</div></div>
+</article><article class="exercise" data-exercise-name="Incline Dumbbell Curl">
+<div class="head"><div><em>Biceps</em><h4>Incline Dumbbell Curl</h4></div>
+<label for="f17">＋ Add images</label><input id="f17" type="file" accept="image/*" multiple onchange="showImages(event,'p17')"></div>
+<div class="photos" id="p17"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Biceps</div></div>
+</article><article class="exercise" data-exercise-name="Preacher Curl">
+<div class="head"><div><em>Biceps</em><h4>Preacher Curl</h4></div>
+<label for="f18">＋ Add images</label><input id="f18" type="file" accept="image/*" multiple onchange="showImages(event,'p18')"></div>
+<div class="photos" id="p18"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Biceps isolation</div></div>
+</article></section><section class="group"><h3>Triceps — Choose 3</h3><article class="exercise" data-exercise-name="V-Bar Pushdown">
+<div class="head"><div><em>Triceps</em><h4>V-Bar Pushdown</h4></div>
+<label for="f19">＋ Add images</label><input id="f19" type="file" accept="image/*" multiple onchange="showImages(event,'p19')"></div>
+<div class="photos" id="p19"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall triceps</div></div>
+</article><article class="exercise" data-exercise-name="French Press">
+<div class="head"><div><em>Triceps</em><h4>French Press</h4></div>
+<label for="f20">＋ Add images</label><input id="f20" type="file" accept="image/*" multiple onchange="showImages(event,'p20')"></div>
+<div class="photos" id="p20"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Triceps long head</div></div>
+</article><article class="exercise" data-exercise-name="Rope Pushdown">
+<div class="head"><div><em>Triceps</em><h4>Rope Pushdown</h4></div>
+<label for="f21">＋ Add images</label><input id="f21" type="file" accept="image/*" multiple onchange="showImages(event,'p21')"></div>
+<div class="photos" id="p21"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall triceps</div></div>
+</article><article class="exercise" data-exercise-name="Overhead Cable Triceps Extension">
+<div class="head"><div><em>Triceps</em><h4>Overhead Cable Triceps Extension</h4></div>
+<label for="f22">＋ Add images</label><input id="f22" type="file" accept="image/*" multiple onchange="showImages(event,'p22')"></div>
+<div class="photos" id="p22"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Triceps long head</div></div>
+</article><article class="exercise" data-exercise-name="Assisted or Bodyweight Dips">
+<div class="head"><div><em>Triceps</em><h4>Assisted or Bodyweight Dips</h4></div>
+<label for="f23">＋ Add images</label><input id="f23" type="file" accept="image/*" multiple onchange="showImages(event,'p23')"></div>
+<div class="photos" id="p23"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Triceps and chest</div></div>
+</article></section><section class="group"><h3>Forearms — Choose 1–2</h3><article class="exercise" data-exercise-name="Barbell Wrist Curl">
+<div class="head"><div><em>Forearms</em><h4>Barbell Wrist Curl</h4></div>
+<label for="f24">＋ Add images</label><input id="f24" type="file" accept="image/*" multiple onchange="showImages(event,'p24')"></div>
+<div class="photos" id="p24"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Forearm flexors</div></div>
+</article><article class="exercise" data-exercise-name="Reverse Wrist Curl">
+<div class="head"><div><em>Forearms</em><h4>Reverse Wrist Curl</h4></div>
+<label for="f25">＋ Add images</label><input id="f25" type="file" accept="image/*" multiple onchange="showImages(event,'p25')"></div>
+<div class="photos" id="p25"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Forearm extensors</div></div>
+</article><article class="exercise" data-exercise-name="Reverse EZ-Bar Curl">
+<div class="head"><div><em>Forearms</em><h4>Reverse EZ-Bar Curl</h4></div>
+<label for="f26">＋ Add images</label><input id="f26" type="file" accept="image/*" multiple onchange="showImages(event,'p26')"></div>
+<div class="photos" id="p26"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Forearms and brachialis</div></div>
+</article><article class="exercise" data-exercise-name="Farmer's Carry">
+<div class="head"><div><em>Forearms</em><h4>Farmer's Carry</h4></div>
+<label for="f27">＋ Add images</label><input id="f27" type="file" accept="image/*" multiple onchange="showImages(event,'p27')"></div>
+<div class="photos" id="p27"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 30–60 sec</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Grip, forearms and traps</div></div>
+</article></section><section class="group"><h3>Abs — Choose 2–3</h3><article class="exercise" data-exercise-name="Leg Raises">
+<div class="head"><div><em>Abs</em><h4>Leg Raises</h4></div>
+<label for="f28">＋ Add images</label><input id="f28" type="file" accept="image/*" multiple onchange="showImages(event,'p28')"></div>
+<div class="photos" id="p28"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs and hip flexors</div></div>
+</article><article class="exercise" data-exercise-name="Knee-High Crunches">
+<div class="head"><div><em>Abs</em><h4>Knee-High Crunches</h4></div>
+<label for="f29">＋ Add images</label><input id="f29" type="file" accept="image/*" multiple onchange="showImages(event,'p29')"></div>
+<div class="photos" id="p29"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 15–20</div><div><b>Rest</b>45 sec</div><div><b>Target</b>Abdominals</div></div>
+</article><article class="exercise" data-exercise-name="Cable Crunch">
+<div class="head"><div><em>Abs</em><h4>Cable Crunch</h4></div>
+<label for="f30">＋ Add images</label><input id="f30" type="file" accept="image/*" multiple onchange="showImages(event,'p30')"></div>
+<div class="photos" id="p30"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs</div></div>
+</article><article class="exercise" data-exercise-name="Hanging Knee Raise">
+<div class="head"><div><em>Abs</em><h4>Hanging Knee Raise</h4></div>
+<label for="f31">＋ Add images</label><input id="f31" type="file" accept="image/*" multiple onchange="showImages(event,'p31')"></div>
+<div class="photos" id="p31"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs and hip flexors</div></div>
+</article><article class="exercise" data-exercise-name="Ab Crunch Machine">
+<div class="head"><div><em>Abs</em><h4>Ab Crunch Machine</h4></div>
+<label for="f32">＋ Add images</label><input id="f32" type="file" accept="image/*" multiple onchange="showImages(event,'p32')"></div>
+<div class="photos" id="p32"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>Barbell Curl → Alternate Dumbbell Curl → Hammer Curl → V-Bar Pushdown → French Press → Barbell Wrist Curl → Leg Raises → Knee-High Crunches</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section><section class="day" id="day3"><header class="dayhead"><span>Workout 3 of 6</span><h2>Day 3 — Wednesday: Back + Legs</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>5 min easy rowing, cycling, or incline walking</li><li>Band Pull-Aparts — 1–2 × 15</li><li>Bodyweight Squats — 1–2 × 10–15</li><li>Leg Swings — 10 per leg</li><li>Progressive warm-up sets before heavy leg work</li></ul></div><section class="group"><h3>Back — Choose 4</h3><article class="exercise" data-exercise-name="Lat Pulldown">
+<div class="head"><div><em>Back</em><h4>Lat Pulldown</h4></div>
+<label for="f33">＋ Add images</label><input id="f33" type="file" accept="image/*" multiple onchange="showImages(event,'p33')"></div>
+<div class="photos" id="p33"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Lats and upper back</div></div>
+</article><article class="exercise" data-exercise-name="Mid Row / Seated Cable Row">
+<div class="head"><div><em>Back</em><h4>Mid Row / Seated Cable Row</h4></div>
+<label for="f34">＋ Add images</label><input id="f34" type="file" accept="image/*" multiple onchange="showImages(event,'p34')"></div>
+<div class="photos" id="p34"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Mid-back and lats</div></div>
+</article><article class="exercise" data-exercise-name="Barbell Shrugs">
+<div class="head"><div><em>Back</em><h4>Barbell Shrugs</h4></div>
+<label for="f35">＋ Add images</label><input id="f35" type="file" accept="image/*" multiple onchange="showImages(event,'p35')"></div>
+<div class="photos" id="p35"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Upper traps</div></div>
+</article><article class="exercise" data-exercise-name="Chest-Supported Row">
+<div class="head"><div><em>Back</em><h4>Chest-Supported Row</h4></div>
+<label for="f36">＋ Add images</label><input id="f36" type="file" accept="image/*" multiple onchange="showImages(event,'p36')"></div>
+<div class="photos" id="p36"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Upper and mid-back</div></div>
+</article><article class="exercise" data-exercise-name="One-Arm Dumbbell Row">
+<div class="head"><div><em>Back</em><h4>One-Arm Dumbbell Row</h4></div>
+<label for="f37">＋ Add images</label><input id="f37" type="file" accept="image/*" multiple onchange="showImages(event,'p37')"></div>
+<div class="photos" id="p37"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12 / side</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Lats and mid-back</div></div>
+</article><article class="exercise" data-exercise-name="Straight-Arm Cable Pulldown">
+<div class="head"><div><em>Back</em><h4>Straight-Arm Cable Pulldown</h4></div>
+<label for="f38">＋ Add images</label><input id="f38" type="file" accept="image/*" multiple onchange="showImages(event,'p38')"></div>
+<div class="photos" id="p38"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Lat isolation</div></div>
+</article></section><section class="group"><h3>Quads — Choose 3</h3><article class="exercise" data-exercise-name="Squats">
+<div class="head"><div><em>Quads</em><h4>Squats</h4></div>
+<label for="f39">＋ Add images</label><input id="f39" type="file" accept="image/*" multiple onchange="showImages(event,'p39')"></div>
+<div class="photos" id="p39"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–10</div><div><b>Rest</b>90–120 sec</div><div><b>Target</b>Quads, glutes and core</div></div>
+</article><article class="exercise" data-exercise-name="Leg Press">
+<div class="head"><div><em>Quads</em><h4>Leg Press</h4></div>
+<label for="f40">＋ Add images</label><input id="f40" type="file" accept="image/*" multiple onchange="showImages(event,'p40')"></div>
+<div class="photos" id="p40"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Quads and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Hack Squat">
+<div class="head"><div><em>Quads</em><h4>Hack Squat</h4></div>
+<label for="f41">＋ Add images</label><input id="f41" type="file" accept="image/*" multiple onchange="showImages(event,'p41')"></div>
+<div class="photos" id="p41"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>90 sec</div><div><b>Target</b>Quads</div></div>
+</article><article class="exercise" data-exercise-name="Bulgarian Split Squat">
+<div class="head"><div><em>Quads</em><h4>Bulgarian Split Squat</h4></div>
+<label for="f42">＋ Add images</label><input id="f42" type="file" accept="image/*" multiple onchange="showImages(event,'p42')"></div>
+<div class="photos" id="p42"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12 / leg</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Quads and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Leg Extension">
+<div class="head"><div><em>Quads</em><h4>Leg Extension</h4></div>
+<label for="f43">＋ Add images</label><input id="f43" type="file" accept="image/*" multiple onchange="showImages(event,'p43')"></div>
+<div class="photos" id="p43"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Quad isolation</div></div>
+</article></section><section class="group"><h3>Hamstrings + Glutes — Choose 2–3</h3><article class="exercise" data-exercise-name="Lying Leg Curl">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Lying Leg Curl</h4></div>
+<label for="f44">＋ Add images</label><input id="f44" type="file" accept="image/*" multiple onchange="showImages(event,'p44')"></div>
+<div class="photos" id="p44"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Hamstrings</div></div>
+</article><article class="exercise" data-exercise-name="Romanian Deadlift">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Romanian Deadlift</h4></div>
+<label for="f45">＋ Add images</label><input id="f45" type="file" accept="image/*" multiple onchange="showImages(event,'p45')"></div>
+<div class="photos" id="p45"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–10</div><div><b>Rest</b>90–120 sec</div><div><b>Target</b>Hamstrings and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Seated Leg Curl">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Seated Leg Curl</h4></div>
+<label for="f46">＋ Add images</label><input id="f46" type="file" accept="image/*" multiple onchange="showImages(event,'p46')"></div>
+<div class="photos" id="p46"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Hamstrings</div></div>
+</article><article class="exercise" data-exercise-name="Hip Thrust">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Hip Thrust</h4></div>
+<label for="f47">＋ Add images</label><input id="f47" type="file" accept="image/*" multiple onchange="showImages(event,'p47')"></div>
+<div class="photos" id="p47"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Glutes</div></div>
+</article></section><section class="group"><h3>Calves — Choose 1–2</h3><article class="exercise" data-exercise-name="Standing Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Standing Calf Raises</h4></div>
+<label for="f48">＋ Add images</label><input id="f48" type="file" accept="image/*" multiple onchange="showImages(event,'p48')"></div>
+<div class="photos" id="p48"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Seated Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Seated Calf Raises</h4></div>
+<label for="f49">＋ Add images</label><input id="f49" type="file" accept="image/*" multiple onchange="showImages(event,'p49')"></div>
+<div class="photos" id="p49"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Leg Press Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Leg Press Calf Raises</h4></div>
+<label for="f50">＋ Add images</label><input id="f50" type="file" accept="image/*" multiple onchange="showImages(event,'p50')"></div>
+<div class="photos" id="p50"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 15–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Single-Leg Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Single-Leg Calf Raises</h4></div>
+<label for="f51">＋ Add images</label><input id="f51" type="file" accept="image/*" multiple onchange="showImages(event,'p51')"></div>
+<div class="photos" id="p51"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20 / leg</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>Lat Pulldown → Mid Row → Chest-Supported Row → Barbell Shrugs → Squats → Leg Press → Lying Leg Curl → Standing Calf Raises</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section><section class="day" id="day4"><header class="dayhead"><span>Workout 4 of 6</span><h2>Day 4 — Thursday: Chest + Shoulders</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>3–5 min light cardio</li><li>Arm Circles — 10–15 each direction</li><li>Band Pull-Aparts — 2 × 15</li><li>Easy Push-Ups — 1 × 10–15</li><li>Progressive warm-up sets before first press</li></ul></div><section class="group"><h3>Chest — Choose 4</h3><article class="exercise" data-exercise-name="Machine Chest Press">
+<div class="head"><div><em>Chest</em><h4>Machine Chest Press</h4></div>
+<label for="f52">＋ Add images</label><input id="f52" type="file" accept="image/*" multiple onchange="showImages(event,'p52')"></div>
+<div class="photos" id="p52"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Overall chest</div></div>
+</article><article class="exercise" data-exercise-name="Incline Smith Machine Press">
+<div class="head"><div><em>Chest</em><h4>Incline Smith Machine Press</h4></div>
+<label for="f53">＋ Add images</label><input id="f53" type="file" accept="image/*" multiple onchange="showImages(event,'p53')"></div>
+<div class="photos" id="p53"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Upper chest</div></div>
+</article><article class="exercise" data-exercise-name="Cable Chest Fly">
+<div class="head"><div><em>Chest</em><h4>Cable Chest Fly</h4></div>
+<label for="f54">＋ Add images</label><input id="f54" type="file" accept="image/*" multiple onchange="showImages(event,'p54')"></div>
+<div class="photos" id="p54"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Chest isolation</div></div>
+</article><article class="exercise" data-exercise-name="Chest Dips">
+<div class="head"><div><em>Chest</em><h4>Chest Dips</h4></div>
+<label for="f55">＋ Add images</label><input id="f55" type="file" accept="image/*" multiple onchange="showImages(event,'p55')"></div>
+<div class="photos" id="p55"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Chest and triceps</div></div>
+</article><article class="exercise" data-exercise-name="Flat Dumbbell Bench Press">
+<div class="head"><div><em>Chest</em><h4>Flat Dumbbell Bench Press</h4></div>
+<label for="f56">＋ Add images</label><input id="f56" type="file" accept="image/*" multiple onchange="showImages(event,'p56')"></div>
+<div class="photos" id="p56"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Overall chest</div></div>
+</article><article class="exercise" data-exercise-name="Incline Chest Press Machine">
+<div class="head"><div><em>Chest</em><h4>Incline Chest Press Machine</h4></div>
+<label for="f57">＋ Add images</label><input id="f57" type="file" accept="image/*" multiple onchange="showImages(event,'p57')"></div>
+<div class="photos" id="p57"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Upper chest</div></div>
+</article><article class="exercise" data-exercise-name="Low-to-High Cable Fly">
+<div class="head"><div><em>Chest</em><h4>Low-to-High Cable Fly</h4></div>
+<label for="f58">＋ Add images</label><input id="f58" type="file" accept="image/*" multiple onchange="showImages(event,'p58')"></div>
+<div class="photos" id="p58"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Upper chest isolation</div></div>
+</article></section><section class="group"><h3>Shoulders — Choose 3–4</h3><article class="exercise" data-exercise-name="Seated Dumbbell Shoulder Press">
+<div class="head"><div><em>Shoulders</em><h4>Seated Dumbbell Shoulder Press</h4></div>
+<label for="f59">＋ Add images</label><input id="f59" type="file" accept="image/*" multiple onchange="showImages(event,'p59')"></div>
+<div class="photos" id="p59"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Front and side delts</div></div>
+</article><article class="exercise" data-exercise-name="Cable Lateral Raise">
+<div class="head"><div><em>Shoulders</em><h4>Cable Lateral Raise</h4></div>
+<label for="f60">＋ Add images</label><input id="f60" type="file" accept="image/*" multiple onchange="showImages(event,'p60')"></div>
+<div class="photos" id="p60"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Side delts</div></div>
+</article><article class="exercise" data-exercise-name="Reverse Pec Deck">
+<div class="head"><div><em>Shoulders</em><h4>Reverse Pec Deck</h4></div>
+<label for="f61">＋ Add images</label><input id="f61" type="file" accept="image/*" multiple onchange="showImages(event,'p61')"></div>
+<div class="photos" id="p61"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Rear delts</div></div>
+</article><article class="exercise" data-exercise-name="Machine Shoulder Press">
+<div class="head"><div><em>Shoulders</em><h4>Machine Shoulder Press</h4></div>
+<label for="f62">＋ Add images</label><input id="f62" type="file" accept="image/*" multiple onchange="showImages(event,'p62')"></div>
+<div class="photos" id="p62"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Front and side delts</div></div>
+</article><article class="exercise" data-exercise-name="Dumbbell Lateral Raise">
+<div class="head"><div><em>Shoulders</em><h4>Dumbbell Lateral Raise</h4></div>
+<label for="f63">＋ Add images</label><input id="f63" type="file" accept="image/*" multiple onchange="showImages(event,'p63')"></div>
+<div class="photos" id="p63"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Side delts</div></div>
+</article><article class="exercise" data-exercise-name="Face Pull">
+<div class="head"><div><em>Shoulders</em><h4>Face Pull</h4></div>
+<label for="f64">＋ Add images</label><input id="f64" type="file" accept="image/*" multiple onchange="showImages(event,'p64')"></div>
+<div class="photos" id="p64"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Rear delts and upper back</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>Machine Chest Press → Incline Smith Machine Press → Cable Chest Fly → Chest Dips → Seated Dumbbell Shoulder Press → Cable Lateral Raise → Reverse Pec Deck</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section><section class="day" id="day5"><header class="dayhead"><span>Workout 5 of 6</span><h2>Day 5 — Friday: Arms + Abs</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>3–5 min easy cardio</li><li>Arm Circles and Wrist Circles</li><li>Very light curl set — 1 × 15</li><li>Very light triceps pushdown — 1 × 15</li></ul></div><section class="group"><h3>Biceps — Choose 3</h3><article class="exercise" data-exercise-name="EZ-Bar Curl">
+<div class="head"><div><em>Biceps</em><h4>EZ-Bar Curl</h4></div>
+<label for="f65">＋ Add images</label><input id="f65" type="file" accept="image/*" multiple onchange="showImages(event,'p65')"></div>
+<div class="photos" id="p65"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Overall biceps</div></div>
+</article><article class="exercise" data-exercise-name="Incline Dumbbell Curl">
+<div class="head"><div><em>Biceps</em><h4>Incline Dumbbell Curl</h4></div>
+<label for="f66">＋ Add images</label><input id="f66" type="file" accept="image/*" multiple onchange="showImages(event,'p66')"></div>
+<div class="photos" id="p66"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Biceps</div></div>
+</article><article class="exercise" data-exercise-name="Preacher Curl">
+<div class="head"><div><em>Biceps</em><h4>Preacher Curl</h4></div>
+<label for="f67">＋ Add images</label><input id="f67" type="file" accept="image/*" multiple onchange="showImages(event,'p67')"></div>
+<div class="photos" id="p67"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Biceps isolation</div></div>
+</article><article class="exercise" data-exercise-name="Hammer Curl">
+<div class="head"><div><em>Biceps</em><h4>Hammer Curl</h4></div>
+<label for="f68">＋ Add images</label><input id="f68" type="file" accept="image/*" multiple onchange="showImages(event,'p68')"></div>
+<div class="photos" id="p68"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Biceps, brachialis and forearms</div></div>
+</article><article class="exercise" data-exercise-name="Cable Biceps Curl">
+<div class="head"><div><em>Biceps</em><h4>Cable Biceps Curl</h4></div>
+<label for="f69">＋ Add images</label><input id="f69" type="file" accept="image/*" multiple onchange="showImages(event,'p69')"></div>
+<div class="photos" id="p69"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall biceps</div></div>
+</article><article class="exercise" data-exercise-name="Concentration Curl">
+<div class="head"><div><em>Biceps</em><h4>Concentration Curl</h4></div>
+<label for="f70">＋ Add images</label><input id="f70" type="file" accept="image/*" multiple onchange="showImages(event,'p70')"></div>
+<div class="photos" id="p70"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15 / arm</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Biceps isolation</div></div>
+</article></section><section class="group"><h3>Triceps — Choose 3</h3><article class="exercise" data-exercise-name="Rope Pushdown">
+<div class="head"><div><em>Triceps</em><h4>Rope Pushdown</h4></div>
+<label for="f71">＋ Add images</label><input id="f71" type="file" accept="image/*" multiple onchange="showImages(event,'p71')"></div>
+<div class="photos" id="p71"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall triceps</div></div>
+</article><article class="exercise" data-exercise-name="Overhead Cable Triceps Extension">
+<div class="head"><div><em>Triceps</em><h4>Overhead Cable Triceps Extension</h4></div>
+<label for="f72">＋ Add images</label><input id="f72" type="file" accept="image/*" multiple onchange="showImages(event,'p72')"></div>
+<div class="photos" id="p72"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Triceps long head</div></div>
+</article><article class="exercise" data-exercise-name="Single-Arm Cable Extension">
+<div class="head"><div><em>Triceps</em><h4>Single-Arm Cable Extension</h4></div>
+<label for="f73">＋ Add images</label><input id="f73" type="file" accept="image/*" multiple onchange="showImages(event,'p73')"></div>
+<div class="photos" id="p73"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15 / arm</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Triceps isolation</div></div>
+</article><article class="exercise" data-exercise-name="V-Bar Pushdown">
+<div class="head"><div><em>Triceps</em><h4>V-Bar Pushdown</h4></div>
+<label for="f74">＋ Add images</label><input id="f74" type="file" accept="image/*" multiple onchange="showImages(event,'p74')"></div>
+<div class="photos" id="p74"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Overall triceps</div></div>
+</article><article class="exercise" data-exercise-name="EZ-Bar Skull Crusher">
+<div class="head"><div><em>Triceps</em><h4>EZ-Bar Skull Crusher</h4></div>
+<label for="f75">＋ Add images</label><input id="f75" type="file" accept="image/*" multiple onchange="showImages(event,'p75')"></div>
+<div class="photos" id="p75"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Triceps</div></div>
+</article><article class="exercise" data-exercise-name="Assisted Dips">
+<div class="head"><div><em>Triceps</em><h4>Assisted Dips</h4></div>
+<label for="f76">＋ Add images</label><input id="f76" type="file" accept="image/*" multiple onchange="showImages(event,'p76')"></div>
+<div class="photos" id="p76"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Triceps and chest</div></div>
+</article></section><section class="group"><h3>Forearms — Choose 1–2</h3><article class="exercise" data-exercise-name="Reverse Wrist Curl">
+<div class="head"><div><em>Forearms</em><h4>Reverse Wrist Curl</h4></div>
+<label for="f77">＋ Add images</label><input id="f77" type="file" accept="image/*" multiple onchange="showImages(event,'p77')"></div>
+<div class="photos" id="p77"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Forearm extensors</div></div>
+</article><article class="exercise" data-exercise-name="Barbell Wrist Curl">
+<div class="head"><div><em>Forearms</em><h4>Barbell Wrist Curl</h4></div>
+<label for="f78">＋ Add images</label><input id="f78" type="file" accept="image/*" multiple onchange="showImages(event,'p78')"></div>
+<div class="photos" id="p78"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Forearm flexors</div></div>
+</article><article class="exercise" data-exercise-name="Farmer's Carry">
+<div class="head"><div><em>Forearms</em><h4>Farmer's Carry</h4></div>
+<label for="f79">＋ Add images</label><input id="f79" type="file" accept="image/*" multiple onchange="showImages(event,'p79')"></div>
+<div class="photos" id="p79"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 30–60 sec</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Grip and forearms</div></div>
+</article><article class="exercise" data-exercise-name="Reverse EZ-Bar Curl">
+<div class="head"><div><em>Forearms</em><h4>Reverse EZ-Bar Curl</h4></div>
+<label for="f80">＋ Add images</label><input id="f80" type="file" accept="image/*" multiple onchange="showImages(event,'p80')"></div>
+<div class="photos" id="p80"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Forearms and brachialis</div></div>
+</article></section><section class="group"><h3>Abs — Choose 2–3</h3><article class="exercise" data-exercise-name="Hanging Knee Raise">
+<div class="head"><div><em>Abs</em><h4>Hanging Knee Raise</h4></div>
+<label for="f81">＋ Add images</label><input id="f81" type="file" accept="image/*" multiple onchange="showImages(event,'p81')"></div>
+<div class="photos" id="p81"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs and hip flexors</div></div>
+</article><article class="exercise" data-exercise-name="Cable Crunch">
+<div class="head"><div><em>Abs</em><h4>Cable Crunch</h4></div>
+<label for="f82">＋ Add images</label><input id="f82" type="file" accept="image/*" multiple onchange="showImages(event,'p82')"></div>
+<div class="photos" id="p82"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs</div></div>
+</article><article class="exercise" data-exercise-name="Leg Raises">
+<div class="head"><div><em>Abs</em><h4>Leg Raises</h4></div>
+<label for="f83">＋ Add images</label><input id="f83" type="file" accept="image/*" multiple onchange="showImages(event,'p83')"></div>
+<div class="photos" id="p83"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs and hip flexors</div></div>
+</article><article class="exercise" data-exercise-name="Ab Crunch Machine">
+<div class="head"><div><em>Abs</em><h4>Ab Crunch Machine</h4></div>
+<label for="f84">＋ Add images</label><input id="f84" type="file" accept="image/*" multiple onchange="showImages(event,'p84')"></div>
+<div class="photos" id="p84"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Abs</div></div>
+</article><article class="exercise" data-exercise-name="Pallof Press">
+<div class="head"><div><em>Abs</em><h4>Pallof Press</h4></div>
+<label for="f85">＋ Add images</label><input id="f85" type="file" accept="image/*" multiple onchange="showImages(event,'p85')"></div>
+<div class="photos" id="p85"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15 / side</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Anti-rotation core</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>EZ-Bar Curl → Incline Dumbbell Curl → Preacher Curl → Rope Pushdown → Overhead Cable Extension → Hanging Knee Raise → Cable Crunch</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section><section class="day" id="day6"><header class="dayhead"><span>Workout 6 of 6</span><h2>Day 6 — Saturday: Back + Legs</h2></header>
+<div class="warm"><h3>Warm-up</h3><ul><li>5 min easy cycling or rowing</li><li>Band Pull-Aparts — 1–2 × 15</li><li>Bodyweight Squats — 1–2 × 10–15</li><li>Leg Swings — 10 per leg</li><li>Glute Bridges — 1 × 12–15</li><li>Progressive warm-up sets before heavy leg work</li></ul></div><section class="group"><h3>Back — Choose 4</h3><article class="exercise" data-exercise-name="Assisted Pull-Ups">
+<div class="head"><div><em>Back</em><h4>Assisted Pull-Ups</h4></div>
+<label for="f86">＋ Add images</label><input id="f86" type="file" accept="image/*" multiple onchange="showImages(event,'p86')"></div>
+<div class="photos" id="p86"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Lats and upper back</div></div>
+</article><article class="exercise" data-exercise-name="Chest-Supported Row">
+<div class="head"><div><em>Back</em><h4>Chest-Supported Row</h4></div>
+<label for="f87">＋ Add images</label><input id="f87" type="file" accept="image/*" multiple onchange="showImages(event,'p87')"></div>
+<div class="photos" id="p87"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Upper and mid-back</div></div>
+</article><article class="exercise" data-exercise-name="Straight-Arm Cable Pulldown">
+<div class="head"><div><em>Back</em><h4>Straight-Arm Cable Pulldown</h4></div>
+<label for="f88">＋ Add images</label><input id="f88" type="file" accept="image/*" multiple onchange="showImages(event,'p88')"></div>
+<div class="photos" id="p88"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Lat isolation</div></div>
+</article><article class="exercise" data-exercise-name="Lat Pulldown">
+<div class="head"><div><em>Back</em><h4>Lat Pulldown</h4></div>
+<label for="f89">＋ Add images</label><input id="f89" type="file" accept="image/*" multiple onchange="showImages(event,'p89')"></div>
+<div class="photos" id="p89"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Lats and upper back</div></div>
+</article><article class="exercise" data-exercise-name="Machine Row">
+<div class="head"><div><em>Back</em><h4>Machine Row</h4></div>
+<label for="f90">＋ Add images</label><input id="f90" type="file" accept="image/*" multiple onchange="showImages(event,'p90')"></div>
+<div class="photos" id="p90"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Mid-back</div></div>
+</article><article class="exercise" data-exercise-name="One-Arm Dumbbell Row">
+<div class="head"><div><em>Back</em><h4>One-Arm Dumbbell Row</h4></div>
+<label for="f91">＋ Add images</label><input id="f91" type="file" accept="image/*" multiple onchange="showImages(event,'p91')"></div>
+<div class="photos" id="p91"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12 / side</div><div><b>Rest</b>60–90 sec</div><div><b>Target</b>Lats and mid-back</div></div>
+</article></section><section class="group"><h3>Quads — Choose 3</h3><article class="exercise" data-exercise-name="Hack Squat">
+<div class="head"><div><em>Quads</em><h4>Hack Squat</h4></div>
+<label for="f92">＋ Add images</label><input id="f92" type="file" accept="image/*" multiple onchange="showImages(event,'p92')"></div>
+<div class="photos" id="p92"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>90 sec</div><div><b>Target</b>Quads</div></div>
+</article><article class="exercise" data-exercise-name="Bulgarian Split Squat">
+<div class="head"><div><em>Quads</em><h4>Bulgarian Split Squat</h4></div>
+<label for="f93">＋ Add images</label><input id="f93" type="file" accept="image/*" multiple onchange="showImages(event,'p93')"></div>
+<div class="photos" id="p93"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12 / leg</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Quads and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Leg Press">
+<div class="head"><div><em>Quads</em><h4>Leg Press</h4></div>
+<label for="f94">＋ Add images</label><input id="f94" type="file" accept="image/*" multiple onchange="showImages(event,'p94')"></div>
+<div class="photos" id="p94"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Quads and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Smith Machine Squat">
+<div class="head"><div><em>Quads</em><h4>Smith Machine Squat</h4></div>
+<label for="f95">＋ Add images</label><input id="f95" type="file" accept="image/*" multiple onchange="showImages(event,'p95')"></div>
+<div class="photos" id="p95"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>90 sec</div><div><b>Target</b>Quads and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Leg Extension">
+<div class="head"><div><em>Quads</em><h4>Leg Extension</h4></div>
+<label for="f96">＋ Add images</label><input id="f96" type="file" accept="image/*" multiple onchange="showImages(event,'p96')"></div>
+<div class="photos" id="p96"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Quad isolation</div></div>
+</article></section><section class="group"><h3>Hamstrings + Glutes — Choose 2–3</h3><article class="exercise" data-exercise-name="Romanian Deadlift">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Romanian Deadlift</h4></div>
+<label for="f97">＋ Add images</label><input id="f97" type="file" accept="image/*" multiple onchange="showImages(event,'p97')"></div>
+<div class="photos" id="p97"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 6–10</div><div><b>Rest</b>90–120 sec</div><div><b>Target</b>Hamstrings and glutes</div></div>
+</article><article class="exercise" data-exercise-name="Seated Leg Curl">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Seated Leg Curl</h4></div>
+<label for="f98">＋ Add images</label><input id="f98" type="file" accept="image/*" multiple onchange="showImages(event,'p98')"></div>
+<div class="photos" id="p98"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Hamstrings</div></div>
+</article><article class="exercise" data-exercise-name="Hip Thrust">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Hip Thrust</h4></div>
+<label for="f99">＋ Add images</label><input id="f99" type="file" accept="image/*" multiple onchange="showImages(event,'p99')"></div>
+<div class="photos" id="p99"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 8–12</div><div><b>Rest</b>75–90 sec</div><div><b>Target</b>Glutes</div></div>
+</article><article class="exercise" data-exercise-name="Lying Leg Curl">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Lying Leg Curl</h4></div>
+<label for="f100">＋ Add images</label><input id="f100" type="file" accept="image/*" multiple onchange="showImages(event,'p100')"></div>
+<div class="photos" id="p100"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60–75 sec</div><div><b>Target</b>Hamstrings</div></div>
+</article><article class="exercise" data-exercise-name="Cable Pull-Through">
+<div class="head"><div><em>Hamstrings + Glutes</em><h4>Cable Pull-Through</h4></div>
+<label for="f101">＋ Add images</label><input id="f101" type="file" accept="image/*" multiple onchange="showImages(event,'p101')"></div>
+<div class="photos" id="p101"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 10–15</div><div><b>Rest</b>60 sec</div><div><b>Target</b>Glutes and hamstrings</div></div>
+</article></section><section class="group"><h3>Calves — Choose 1–2</h3><article class="exercise" data-exercise-name="Seated Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Seated Calf Raises</h4></div>
+<label for="f102">＋ Add images</label><input id="f102" type="file" accept="image/*" multiple onchange="showImages(event,'p102')"></div>
+<div class="photos" id="p102"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Standing Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Standing Calf Raises</h4></div>
+<label for="f103">＋ Add images</label><input id="f103" type="file" accept="image/*" multiple onchange="showImages(event,'p103')"></div>
+<div class="photos" id="p103"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Leg Press Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Leg Press Calf Raises</h4></div>
+<label for="f104">＋ Add images</label><input id="f104" type="file" accept="image/*" multiple onchange="showImages(event,'p104')"></div>
+<div class="photos" id="p104"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 15–20</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article><article class="exercise" data-exercise-name="Single-Leg Calf Raises">
+<div class="head"><div><em>Calves</em><h4>Single-Leg Calf Raises</h4></div>
+<label for="f105">＋ Add images</label><input id="f105" type="file" accept="image/*" multiple onchange="showImages(event,'p105')"></div>
+<div class="photos" id="p105"><div class="placeholder">Add one or multiple form-demo images</div></div>
+<div class="stats"><div><b>Sets & reps</b>3 × 12–20 / leg</div><div><b>Rest</b>45–60 sec</div><div><b>Target</b>Calves</div></div>
+</article></section>
+<div class="recommended"><small>RECOMMENDED SELECTION</small><p>Assisted Pull-Ups → Chest-Supported Row → Straight-Arm Cable Pulldown → Machine Row → Hack Squat → Bulgarian Split Squat → Romanian Deadlift → Seated Leg Curl → Seated Calf Raises</p></div>
+<div class="finish"><h3>Finish</h3><p><b>Cardio:</b> 10–20 minutes moderate cardio when recovery allows. Keep it easy after a demanding leg session.</p><p><b>Cool-down:</b> 3–5 minutes easy walking plus gentle stretches for the muscles trained.</p></div></section>
+<section class="day" style="text-align:center"><h2>Day 7 — Sunday: Complete Rest</h2><p>Normal walking and gentle mobility are fine. Prioritise sleep, hydration, protein intake, and recovery.</p></section></div>
+
+<script>
+const DB_NAME = 'GymPlanPersistentImagesDB';
+const DB_VERSION = 1;
+const STORE = 'exerciseImages';
+let dbPromise = null;
+
+function setStatus(message) {
+  const el = document.getElementById('storageStatus');
+  if (el) el.textContent = message;
+}
+
+function openDB() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(STORE)) {
+        db.createObjectStore(STORE, { keyPath: 'id', autoIncrement: true });
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+  return dbPromise;
+}
+
+async function addImageRecord(exerciseId, file) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    const req = tx.objectStore(STORE).add({
+      exerciseId,
+      name: file.name || 'exercise-image',
+      type: file.type || 'image/jpeg',
+      blob: file,
+      createdAt: Date.now()
+    });
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function getImagesForExercise(exerciseId) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readonly');
+    const req = tx.objectStore(STORE).getAll();
+    req.onsuccess = () => resolve(req.result.filter(x => x.exerciseId === exerciseId));
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function getAllImages() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readonly');
+    const req = tx.objectStore(STORE).getAll();
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function deleteImageRecord(id) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    const req = tx.objectStore(STORE).delete(id);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function clearStore() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    const req = tx.objectStore(STORE).clear();
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function placeholderHTML() {
+  return '<div class="placeholder">Add one or multiple form-demo images</div>';
+}
+
+function renderRecord(box, record) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'photo-item';
+  wrapper.dataset.recordId = record.id;
+
+  const img = document.createElement('img');
+  const objectURL = URL.createObjectURL(record.blob);
+  img.src = objectURL;
+  img.alt = 'Exercise form demonstration';
+  img.onload = () => URL.revokeObjectURL(objectURL);
+
+  const btn = document.createElement('button');
+  btn.className = 'remove';
+  btn.type = 'button';
+  btn.textContent = '×';
+  btn.title = 'Remove image permanently';
+  btn.onclick = async () => {
+    await deleteImageRecord(record.id);
+    wrapper.remove();
+    if (!box.querySelector('.photo-item') && !box.querySelector('.default-photo')) box.innerHTML = placeholderHTML();
+    setStatus('Image removed permanently.');
+  };
+
+  wrapper.append(img, btn);
+  box.appendChild(wrapper);
+}
+
+async function loadExerciseImages(exerciseId) {
+  const box = document.getElementById(exerciseId);
+  if (!box) return;
+  const records = await getImagesForExercise(exerciseId);
+
+  // Preserve default internet images. Remove only previously rendered manual images
+  // and placeholders before re-rendering saved uploads.
+  box.querySelectorAll('.photo-item, .placeholder').forEach(el => el.remove());
+
+  if (!records.length) {
+    if (!box.querySelector('.default-photo')) box.innerHTML = placeholderHTML();
+    return;
+  }
+
+  records.sort((a,b) => a.createdAt - b.createdAt).forEach(r => renderRecord(box, r));
+}
+
+async function loadAllSavedImages() {
+  setStatus('Loading saved images…');
+  const boxes = Array.from(document.querySelectorAll('.photos[id]'));
+  for (const box of boxes) await loadExerciseImages(box.id);
+  const all = await getAllImages();
+  setStatus(all.length ? `${all.length} saved image${all.length === 1 ? '' : 's'} loaded. They will remain after refresh.` : 'Ready. Images you add will remain after refresh.');
+}
+
+async function showImages(event, exerciseId) {
+  const files = Array.from(event.target.files || []).filter(f => f.type && f.type.startsWith('image/'));
+  if (!files.length) return;
+  setStatus(`Saving ${files.length} image${files.length === 1 ? '' : 's'}…`);
+  try {
+    for (const file of files) await addImageRecord(exerciseId, file);
+    await loadExerciseImages(exerciseId);
+    const all = await getAllImages();
+    setStatus(`${all.length} image${all.length === 1 ? '' : 's'} saved persistently.`);
+  } catch (err) {
+    console.error(err);
+    alert('Could not save the image. Your browser may have blocked local storage or run out of storage space.');
+    setStatus('Save failed. Check browser storage permissions.');
+  }
+  event.target.value = '';
+}
+
+function blobToDataURL(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
+function dataURLToBlob(dataURL) {
+  const parts = dataURL.split(',');
+  const mime = (parts[0].match(/:(.*?);/) || [,'application/octet-stream'])[1];
+  const binary = atob(parts[1]);
+  const bytes = new Uint8Array(binary.length);
+  for (let i=0; i<binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new Blob([bytes], {type:mime});
+}
+
+async function exportBackup() {
+  try {
+    setStatus('Creating backup…');
+    const records = await getAllImages();
+    const images = [];
+    for (const r of records) {
+      images.push({
+        exerciseId: r.exerciseId,
+        name: r.name,
+        type: r.type,
+        createdAt: r.createdAt,
+        dataURL: await blobToDataURL(r.blob)
+      });
+    }
+    const payload = {
+      app: 'Complete 6-Day Gym Plan',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      imageCount: images.length,
+      images
+    };
+    const blob = new Blob([JSON.stringify(payload)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'gym-plan-images-backup-' + new Date().toISOString().slice(0,10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    setStatus(`Backup exported with ${images.length} image${images.length === 1 ? '' : 's'}.`);
+  } catch (err) {
+    console.error(err);
+    alert('Could not export the backup.');
+    setStatus('Backup export failed.');
+  }
+}
+
+async function importBackup(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  try {
+    setStatus('Importing backup…');
+    const payload = JSON.parse(await file.text());
+    if (!payload || !Array.isArray(payload.images)) throw new Error('Invalid backup format');
+    const db = await openDB();
+    for (const item of payload.images) {
+      const blob = dataURLToBlob(item.dataURL);
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readwrite');
+        const req = tx.objectStore(STORE).add({
+          exerciseId: item.exerciseId,
+          name: item.name || 'exercise-image',
+          type: item.type || blob.type,
+          blob,
+          createdAt: item.createdAt || Date.now()
+        });
+        req.onsuccess = () => resolve();
+        req.onerror = () => reject(req.error);
+      });
+    }
+    await loadAllSavedImages();
+    setStatus(`Backup imported successfully: ${payload.images.length} image${payload.images.length === 1 ? '' : 's'}.`);
+  } catch (err) {
+    console.error(err);
+    alert('Could not import this backup. Please select a backup JSON exported by this gym plan.');
+    setStatus('Backup import failed.');
+  }
+  event.target.value = '';
+}
+
+async function clearAllSavedImages() {
+  if (!confirm('Permanently remove every saved exercise image from this browser? Export a backup first if you may need them later.')) return;
+  await clearStore();
+  document.querySelectorAll('.photos[id]').forEach(box => box.innerHTML = placeholderHTML());
+  setStatus('All saved images were permanently removed.');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    if (!('indexedDB' in window)) throw new Error('IndexedDB unavailable');
+    await openDB();
+    await loadAllSavedImages();
+  } catch (err) {
+    console.error(err);
+    setStatus('Persistent storage is unavailable in this browser/context.');
+    alert('This browser could not enable persistent image storage. Try opening the HTML in Chrome, Edge, Firefox, or Safari with normal browser storage enabled.');
+  }
+});
+
+const EXERCISE_DATA_URL = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json';
+const EXERCISE_IMAGE_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
+
+const EXERCISE_ALIASES = {
+  'flat bench press':'barbell bench press - medium grip',
+  'incline dumbbell press':'incline dumbbell press',
+  'pec deck fly':'butterfly',
+  'dumbbell pullover':'bent-arm dumbbell pullover',
+  'machine chest press':'chest press',
+  'cable chest fly':'cable crossover',
+  'chest dips':'dips - chest version',
+  'front military press':'standing military press',
+  'side lateral raises':'side lateral raise',
+  'barbell upright row':'upright barbell row',
+  'seated dumbbell shoulder press':'seated dumbbell press',
+  'cable lateral raise':'one-arm side laterals',
+  'reverse pec deck':'reverse machine flyes',
+  'barbell curl':'barbell curl',
+  'alternate dumbbell curl':'alternate hammer curl',
+  'hammer curl':'hammer curls',
+  'incline dumbbell curl':'incline dumbbell curl',
+  'preacher curl':'preacher curl',
+  'v-bar pushdown':'triceps pushdown - v-bar attachment',
+  'french press':'standing overhead barbell triceps extension',
+  'rope pushdown':'triceps pushdown - rope attachment',
+  'overhead cable triceps extension':'cable rope overhead triceps extension',
+  'assisted or bodyweight dips':'dips - triceps version',
+  'barbell wrist curl':'palms-up barbell wrist curl over a bench',
+  'reverse wrist curl':'palms-down wrist curl over a bench',
+  'reverse ez-bar curl':'reverse barbell curl',
+  "farmer's carry":"farmer's walk",
+  'leg raises':'flat bench lying leg raise',
+  'knee-high crunches':'crunches',
+  'cable crunch':'cable crunch',
+  'hanging knee raise':'hanging leg raise',
+  'ab crunch machine':'ab crunch machine',
+  'lat pulldown':'wide-grip lat pulldown',
+  'mid row / seated cable row':'seated cable rows',
+  'barbell shrugs':'barbell shrug',
+  'chest-supported row':'dumbbell incline row',
+  'one-arm dumbbell row':'one-arm dumbbell row',
+  'straight-arm cable pulldown':'straight-arm pulldown',
+  'squats':'barbell squat',
+  'leg press':'leg press',
+  'hack squat':'hack squat',
+  'bulgarian split squat':'single leg barbell squat',
+  'leg extension':'leg extensions',
+  'lying leg curl':'lying leg curls',
+  'romanian deadlift':'romanian deadlift',
+  'seated leg curl':'seated leg curl',
+  'hip thrust':'barbell hip thrust',
+  'standing calf raises':'standing calf raises',
+  'seated calf raises':'seated calf raise',
+  'leg press calf raises':'calf press on the leg press machine',
+  'single-leg calf raises':'standing dumbbell calf raise',
+  'incline smith machine press':'smith machine incline bench press',
+  'flat dumbbell bench press':'dumbbell bench press',
+  'incline chest press machine':'leverage incline chest press',
+  'low-to-high cable fly':'low cable crossover',
+  'machine shoulder press':'machine shoulder (military) press',
+  'dumbbell lateral raise':'side lateral raise',
+  'face pull':'face pull',
+  'ez-bar curl':'ez-bar curl',
+  'cable biceps curl':'cable hammer curls - rope attachment',
+  'concentration curl':'concentration curls',
+  'single-arm cable extension':'one arm pronated dumbbell triceps extension',
+  'ez-bar skull crusher':'ez-bar skullcrusher',
+  'assisted dips':'dips - triceps version',
+  'pallof press':'pallof press',
+  'assisted pull-ups':'pullups',
+  'machine row':'seated cable rows',
+  'smith machine squat':'smith machine squat',
+  'cable pull-through':'pull through'
+};
+
+function normName(s) {
+  return (s || '').toLowerCase()
+    .replace(/&amp;/g,'and').replace(/&/g,'and')
+    .replace(/[^a-z0-9]+/g,' ').trim();
+}
+
+function scoreMatch(wanted, candidate) {
+  const a = new Set(normName(wanted).split(' '));
+  const b = new Set(normName(candidate).split(' '));
+  let overlap = 0;
+  a.forEach(x => { if (b.has(x)) overlap++; });
+  return overlap / Math.max(a.size, b.size, 1);
+}
+
+
+const MANUAL_IMAGE_FALLBACKS = {
+  'knee-high crunches': [
+    'Crunches/0.jpg',
+    'Crunches/1.jpg'
+  ],
+  'chest-supported row': [
+    'Dumbbell_Incline_Row/0.jpg',
+    'Dumbbell_Incline_Row/1.jpg'
+  ],
+  'single-leg calf raises': [
+    'Standing_Dumbbell_Calf_Raise/0.jpg',
+    'Standing_Dumbbell_Calf_Raise/1.jpg'
+  ],
+  'low-to-high cable fly': [
+    'Low_Cable_Crossover/0.jpg',
+    'Low_Cable_Crossover/1.jpg'
+  ],
+  'ez-bar skull crusher': [
+    'EZ-Bar_Skullcrusher/0.jpg',
+    'EZ-Bar_Skullcrusher/1.jpg'
+  ]
+};
+
+function addDefaultImagePaths(card, original, paths) {
+  const box = card.querySelector('.photos');
+  if (!box || !paths || !paths.length) return false;
+
+  const placeholder = box.querySelector('.placeholder');
+  if (placeholder) placeholder.remove();
+
+  paths.slice(0, 2).forEach((path, index) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'default-photo';
+    wrap.dataset.defaultImage = 'true';
+
+    const img = document.createElement('img');
+    img.src = EXERCISE_IMAGE_BASE + path;
+    img.alt = original + ' form demonstration ' + (index + 1);
+    img.loading = 'lazy';
+    img.onerror = () => wrap.remove();
+
+    const badge = document.createElement('span');
+    badge.className = 'default-badge';
+    badge.textContent = 'Default demo';
+
+    wrap.append(img, badge);
+    box.prepend(wrap);
+  });
+  return true;
+}
+
+async function loadDefaultInternetImages() {
+  try {
+    setStatus('Loading default exercise images from the public exercise database…');
+    const response = await fetch(EXERCISE_DATA_URL);
+    if (!response.ok) throw new Error('Exercise dataset request failed');
+    const exercises = await response.json();
+    const byName = new Map(exercises.map(x => [normName(x.name), x]));
+    let matched = 0;
+
+    document.querySelectorAll('.exercise[data-exercise-name]').forEach(card => {
+      if (card.querySelector('.default-photo')) return;
+      const original = card.dataset.exerciseName;
+      const alias = EXERCISE_ALIASES[normName(original)] || original;
+      let exercise = byName.get(normName(alias));
+
+      if (!exercise) {
+        let best = null, bestScore = 0;
+        exercises.forEach(x => {
+          const s = scoreMatch(alias, x.name);
+          if (s > bestScore) { best = x; bestScore = s; }
+        });
+        if (bestScore >= 0.62) exercise = best;
+      }
+
+      if (!exercise || !exercise.images || !exercise.images.length) {
+        const fallback = MANUAL_IMAGE_FALLBACKS[normName(original)];
+        if (fallback && addDefaultImagePaths(card, original, fallback)) matched++;
+        return;
+      }
+      const box = card.querySelector('.photos');
+      if (!box) return;
+
+      // Keep manually saved images; only remove placeholder.
+      const placeholder = box.querySelector('.placeholder');
+      if (placeholder) placeholder.remove();
+
+      exercise.images.slice(0, 2).forEach((path, index) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'default-photo';
+        wrap.dataset.defaultImage = 'true';
+
+        const img = document.createElement('img');
+        img.src = EXERCISE_IMAGE_BASE + path;
+        img.alt = original + ' form demonstration ' + (index + 1);
+        img.loading = 'lazy';
+        img.onerror = () => wrap.remove();
+
+        const badge = document.createElement('span');
+        badge.className = 'default-badge';
+        badge.textContent = 'Default demo';
+
+        wrap.append(img, badge);
+        box.prepend(wrap);
+      });
+      matched++;
+    });
+
+    setStatus(`Default internet images matched for ${matched} exercise cards. Your own uploaded images are still saved separately.`);
+  } catch (err) {
+    console.error(err);
+    setStatus('Could not load internet exercise images. Your uploaded images and persistent storage still work.');
+  }
+}
+
+// Run default image loading after persistent saved images have loaded.
+window.addEventListener('load', () => {
+  setTimeout(loadDefaultInternetImages, 300);
+});
+
+</script>
+</body></html>
